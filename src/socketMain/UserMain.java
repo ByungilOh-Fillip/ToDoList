@@ -26,12 +26,12 @@ public class UserMain {
 
             while (true) {
                 String requestUser = scanner.nextLine();
-                StringBuilder content = new StringBuilder();
 
                 bw.write(requestUser);
                 bw.newLine();
                 bw.flush();
 
+                StringBuilder content = new StringBuilder();
                 String line;
                 while((line=br.readLine()) != null){
                     if(line.equals("EOF")){ break; }

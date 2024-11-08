@@ -29,6 +29,8 @@ public class Main {
             bw = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             br = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
+            br.readLine();
+
             bw.write(ui.menu());
             bw.newLine();
             bw.flush();
@@ -70,7 +72,7 @@ public class Main {
                             String[] updateIDAndContent = br.readLine().split("/");
 
                             if (updateIDAndContent.length == 2) {
-                                dao.updateTodoContent(Integer.parseInt(updateIDAndContent[0]), updateIDAndContent[1]);
+                                dao.updateTodoContent(Integer.parseInt(updateIDAndContent[1]), updateIDAndContent[0]);
                                 bw.write("변경이 완료되었습니다.\nEOF\n");
                             } else {
                                 bw.write("입력 형식이 잘못되었습니다. id와 content를 /로 구분하여 입력해주세요.\nEOF\n");
