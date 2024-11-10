@@ -46,6 +46,17 @@ public class Main {
                         break;
 
                     case "2":
+                        bw.write("ToDo 보기를 희망하는 날짜를 적어주세요 (ex : 2024-01-01)\nEOF\n");
+                        bw.flush();
+                        try {
+                            bw.write(ui.selectDate(Date.valueOf(br.readLine()))+"\nEOF\n");
+                        } catch (IOException e) {
+                            bw.write("올바른 날짜 형식이 아닙니다.(ex : 2024-01-01)\nEOF\n");
+                        }
+                        bw.flush();
+                        break;
+
+                    case "3":
                         bw.write("todo의 날짜를 적어주세요 (ex : 2024-01-01)\nEOF\n");
                         bw.flush();
                         String createDate = br.readLine();
@@ -61,18 +72,17 @@ public class Main {
                         bw.flush();
                         break;
 
-                    case "3":
+                    case "4":
                         bw.write("변경을 희망하는 날짜를 적어주세요 (ex : 2024-01-01)\nEOF\n");
                         bw.flush();
 
                         try {
-                            String updateDate = br.readLine();
-                            bw.write(ui.selectDate(Date.valueOf(updateDate)) + "\n수정할 id와 content를 입력해주세요! (/로 구분해주세요)\nEOF\n");
+                            bw.write(ui.selectDate(Date.valueOf(br.readLine())) + "\n수정할 id와 content를 입력해주세요! (/로 구분해주세요)\nEOF\n");
                             bw.flush();
                             String[] updateIDAndContent = br.readLine().split("/");
 
                             if (updateIDAndContent.length == 2) {
-                                dao.updateTodoContent(Integer.parseInt(updateIDAndContent[1]), updateIDAndContent[0]);
+                                dao.updateTodoContent(Integer.parseInt(updateIDAndContent[0]), updateIDAndContent[1]);
                                 bw.write("변경이 완료되었습니다.\nEOF\n");
                             } else {
                                 bw.write("입력 형식이 잘못되었습니다. id와 content를 /로 구분하여 입력해주세요.\nEOF\n");
@@ -83,13 +93,12 @@ public class Main {
                         bw.flush();
                         break;
 
-                    case "4":
+                    case "5":
                         bw.write("삭제를 희망하는 날짜를 적어주세요 (ex : 2024-01-01)\nEOF\n");
                         bw.flush();
 
                         try {
-                            String deleteDate = br.readLine();
-                            bw.write(ui.selectDate(Date.valueOf(deleteDate)) + "\n삭제할 id를 입력해주세요.\nEOF\n");
+                            bw.write(ui.selectDate(Date.valueOf(br.readLine())) + "\n삭제할 id를 입력해주세요.\nEOF\n");
                             bw.flush();
                             int deleteId = Integer.parseInt(br.readLine());
                             dao.deleteTodo(deleteId);
@@ -102,13 +111,22 @@ public class Main {
                         bw.flush();
                         break;
 
-                    case "5":
+                    case "6":
                         bw.write("개발자에게 하고 싶으신 말을 남겨주세요.\nEOF\n");
                         bw.flush();
 
+                        String massage = br.readLine();
+                        System.out.println(massage);
+
                         MassageDAO massageDAO = new MassageDAO();
-                        massageDAO.sendMassage(br.readLine());
+                        massageDAO.sendMassage(massage);
                         bw.write("전송이 완료되었습니다.\nEOF\n");
+                        bw.flush();
+                        break;
+
+                    case "7":
+                        bw.write(ui.menu());
+                        bw.newLine();
                         bw.flush();
                         break;
 

@@ -13,10 +13,12 @@ public class String_UI {
 
     HashMap<Integer,String> menuHmap = new HashMap<>(){{
         put(1,"Daily ToDo");
-        put(2,"Make ToDo");
-        put(3,"Update ToDo");
-        put(4,"Delete ToDo");
-        put(5,"Send Message to Developer");
+        put(2,"Desired date Todo ");
+        put(3,"Make ToDo");
+        put(4,"Update ToDo");
+        put(5,"Delete ToDo");
+        put(6,"Send Message to Developer");
+        put(7,"Show menu");
     }};
 
     public String menu(){
