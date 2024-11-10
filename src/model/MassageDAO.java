@@ -7,7 +7,7 @@ import java.time.LocalDateTime;
 public class MassageDAO {
     private static final String URL = "jdbc:mariadb://localhost:3306/todoList";
     private static final String USER = "root";
-    private static final String PASSWORD = "skdmlgkfn46";
+    private static final String PASSWORD = "123456";
 
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
