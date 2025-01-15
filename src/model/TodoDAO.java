@@ -6,8 +6,8 @@ import java.util.*;
 
 public class TodoDAO {
     private static final String URL = "jdbc:mariadb://localhost:3306/todoList";
-    private static final String USER = "root";
-    private static final String PASSWORD = "123456";
+    private static final String USER = "${USERNAME}";
+    private static final String PASSWORD = "${PASSWORD}";
 
     public Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
